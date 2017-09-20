@@ -11,10 +11,7 @@ data Language =  Language
 
 lang :: Parser Language
 lang = Language
-    <$> strOption
-        ( long "lang"
-        <> metavar "LANG"
-        <> help "language to get the gitignore file for" )
+    <$> argument str (metavar "LANGUAGE")
         <*> switch
         ( long "vimify"
         <> short 'v'
