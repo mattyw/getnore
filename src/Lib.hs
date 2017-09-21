@@ -1,6 +1,7 @@
 module Lib
     ( printIgnoreFile
     , vimify
+    , appendRules
     ) where
 
 import Network.HTTP.Client
@@ -13,7 +14,10 @@ capital :: String -> String
 capital (x:xs) = toUpper x : xs
 
 vimify :: String -> String
-vimify xs = "*.swp\n" ++ xs
+vimify = appendRules "*.swp"
+
+appendRules :: String -> String -> String
+appendRules x y = y ++ "\n" ++ x ++ "\n"
 
 printIgnoreFile :: String -> (String -> String) -> IO ()
 printIgnoreFile lang postprocessF = do
