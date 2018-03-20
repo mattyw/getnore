@@ -16,6 +16,7 @@ lang = Language
         <*> strOption
         ( long "append"
         <> metavar "HELLO"
+        <> value ""
         <> help "rules to append to the downloaded file" )
         <*> switch
         ( long "vimify"
@@ -31,4 +32,4 @@ main = run =<< execParser opts
     where
         opts = info (lang <**> helper)
             ( fullDesc
-            <> progDesc "Get gitignore files from github repository" )
+            <> progDesc "Get gitignore files from github repository and print contents to stdout" )
